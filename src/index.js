@@ -4,12 +4,11 @@ import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from 'components/App/App';
 
-/*初始化*/
 renderWithHotReload(App);
 
-/*热更新*/
 if (module.hot) {
     module.hot.accept('components/App/App', () => {
         const NextApp = require('components/App/App').default;
@@ -22,7 +21,7 @@ function renderWithHotReload(RootElement) {
         <AppContainer>
             <Provider store={store}>
                 <Router>
-                    {RootElement}
+                    <RootElement />
                 </Router>
             </Provider>
         </AppContainer>,
