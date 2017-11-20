@@ -14,7 +14,8 @@ const devConfig = {
     },
     output: {
         /*这里本来应该是[chunkhash]的，但是由于[chunkhash]和react-hot-loader不兼容。只能妥协*/
-        filename: '[name].[hash].js'
+        filename: '[name].[hash].js',
+        publicPath: "./"
     },
     module: {
         rules: [{

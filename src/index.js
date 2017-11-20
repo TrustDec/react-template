@@ -19,7 +19,7 @@ function renderWithHotReload(RootElement) {
     ReactDom.render(
         <AppContainer>
             <Provider store={store}>
-                <Router>
+                <Router basename='/react-mc/dist'>
                     <RootElement />
                 </Router>
             </Provider>
