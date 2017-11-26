@@ -18,9 +18,6 @@ const publicConfig = {
             })
         }]
     },
-    output: {
-        //publicPath: "/react-mc/dist/"   
-    },
     plugins: [
         new CleanWebpackPlugin(['dist/*.*']),
         new UglifyJSPlugin(),

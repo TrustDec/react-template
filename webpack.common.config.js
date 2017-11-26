@@ -14,7 +14,7 @@ commonConfig = {
         path: path.join(__dirname, './dist'),
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',
-        // publicPath: "/react-mc/dist/"
+        publicPath: "/"
     },
     module: {
         rules: [{
@@ -51,7 +51,8 @@ commonConfig = {
             components: path.join(__dirname, 'src/components'),
             router: path.join(__dirname, 'src/router'),
             actions: path.join(__dirname, 'src/redux/actions'),
-            reducers: path.join(__dirname, 'src/redux/reducers')
+            reducers: path.join(__dirname, 'src/redux/reducers'),
+            mock: path.join(__dirname, 'mock')
         }
     }
 };

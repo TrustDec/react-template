@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
     constructor(props) {
@@ -17,8 +18,8 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                this is home~sss<br />
-                当前计数：{this.state.count}<br />
+                this is home~<br/>
+                当前计数：{this.state.count}<br/>
                 <button onClick={() => this._handleClick()}>自增</button>
             </div>
         )

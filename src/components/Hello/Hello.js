@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 export default class Hello extends Component {
     render() {
         return (
             <div>
-                Hello,React! Component
+                Hello,React!
             </div>
         )
     }

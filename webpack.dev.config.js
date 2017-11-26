@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const path = require('path');
+const webpack = require('webpack');
 
 const commonConfig = require('./webpack.common.config.js');
 
@@ -14,16 +15,21 @@ const devConfig = {
     },
     output: {
         /*这里本来应该是[chunkhash]的，但是由于[chunkhash]和react-hot-loader不兼容。只能妥协*/
-        filename: '[name].[hash].js',
-        publicPath: "./"
+        filename: '[name].[hash].js'
     },
     module: {
         rules: [{
-            test: /\.(css|scss)$/,
-            use: ["style-loader", "css-loader","postcss-loader"]
+            test: /\.css$/,
+            use: ["style-loader", "css-loader", "postcss-loader"]
         }]
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            MOCK: true
+        })
+    ],
     devServer: {
+        port: 8080,
         contentBase: path.join(__dirname, './dist'),
         historyApiFallback: true,
         host: '0.0.0.0',
