@@ -18,8 +18,13 @@ const publicConfig = {
             })
         }]
     },
+    output:{
+        //publicPath: "./react-mc/"
+        publicPath: "./"
+    },
     plugins: [
-        new CleanWebpackPlugin(['dist/*.*']),
+        //new CleanWebpackPlugin(['dist/*.*']),
+        new CleanWebpackPlugin(['dist/*']),
         new UglifyJSPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
@@ -27,7 +32,7 @@ const publicConfig = {
             }
         }),
         new ExtractTextPlugin({
-            filename: '[name].[contenthash:5].css',
+            filename: 'static/css/[name].[contenthash:5].css',
             allChunks: true
         })
     ]

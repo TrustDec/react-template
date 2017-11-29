@@ -12,9 +12,10 @@ commonConfig = {
     },
     output: {
         path: path.join(__dirname, './dist'),
-        filename: '[name].[chunkhash].js',
-        chunkFilename: '[name].[chunkhash].js',
-        publicPath: "/"
+        filename: 'static/js/[name].[chunkhash].js',
+        chunkFilename: 'static/js/[name].[chunkhash].js',
+        //publicPath: "./react-mc/",
+        //./wapp/webpage/schoolbus/_run
     },
     module: {
         rules: [{
@@ -23,12 +24,14 @@ commonConfig = {
             include: path.join(__dirname, 'src')
         }, {
             test: /\.(png|jpg|gif)$/,
-            use: [{
+            loader:"url-loader"
+            /* use: [{
                 loader: 'url-loader',
                 options: {
-                    limit: 8192
+                    limit: 8192,
+                    name: 'static/images/[name]-[hash:8].[ext]',
                 }
-            }]
+            }] */
         }]
     },
     plugins: [
