@@ -58,7 +58,6 @@ class Details extends Component {
         };
     }
     componentDidMount() {
-        console.log(document.body.scrollTop);
         //this.changeFixed()
     }
     windowOnScroll() {
@@ -105,7 +104,6 @@ class Details extends Component {
 
     render() {
         let data = this.props.location.state;
-        console.log(this.props.location)
         return (
             <MuiThemeProvider style={{ height: '100%', }} >
                 <QueueAnim ease={'easeOutElastic'} >

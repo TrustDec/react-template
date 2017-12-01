@@ -7,7 +7,7 @@ import QueueAnim from 'rc-queue-anim';
 //- 小写数字转换成大写, 只处理到[0 ~ 99]
 function numberConvertToUppercase(num) {
     num = Number(num);
-    var upperCaseNumber = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿'];
+    var upperCaseNumber = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿'];
     var length = String(num).length;
     if (length == 1) {
         return upperCaseNumber[num];
@@ -27,7 +27,7 @@ function compareDate(startTime) {
     let year =date.getFullYear();
     let month = date.getMonth()+1;
     let day = date.getDate();
-    let start = Date.parse(new Date(`${year}-${month}-${day} ${startTime}:00`));
+    let start = Date.parse(new Date(`${year}/${month}/${day} ${startTime}:00`));
     return (start - timestamp3) > 0;
 }
 export default class Currency extends Component {
@@ -81,8 +81,9 @@ export default class Currency extends Component {
                 <div style={{ fontSize: 15, }}>{header}</div>
             </div>
             <div style={{ display: 'flex',justifyContent: 'center', alignItems: 'center'}}>
-                <div style={{ width: 43, height: 18, display: 'flex', justifyContent: 'center', alignItems: 'center',backgroundColor: color,   borderRadius: 3 }}>
-                    <span style={{ color: '#fff', fontSize: 13,}}>{time}</span>
+                <div style={{ width: 43, height: 19, display: 'flex', color: '#fff', fontSize: 13,justifyContent: 'center', alignItems: 'center',backgroundColor: color,   borderRadius: 3 }}>
+                   {/*  <font style={{ color: '#fff', fontSize: 13, }}>{time}</font> */}
+                    {time}
                 </div>
                 
             </div>
