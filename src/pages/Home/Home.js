@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
@@ -10,6 +11,9 @@ import '../../style/App.css';
 import banner from '../../style/banner.png'
 import QueueAnim from 'rc-queue-anim';
 import schoolbus from '../../static/schoolbus';
+import Snackbar from 'material-ui/Snackbar';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Modal } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 class Home extends Component {
     
@@ -18,6 +22,7 @@ class Home extends Component {
         this.state = {
             busdata: null,
             notice: "",
+            visible:false,
         };
     }
     componentDidMount() {
@@ -73,21 +78,34 @@ class Home extends Component {
     render() {
         let notice = this.state.notice.length>0?true:false;
         return (
-            <QueueAnim className="App" ease={'easeInOutElastic'} type={'left'}>
-                <img src={banner} key="logo" alt="logo" style={{ width: '100%',display: 'block' }} ref={ref => this.logo = ref} />
-                { 
-                    notice
-                        ? <NoticeBar marqueeProps={{ loop: true, style: { padding: '0 7.5px' } }}>
-                            通知: {this.state.notice}.
-                        </NoticeBar>
-                        :null
-                 }
-                <MuiThemeProvider key="list">
-                    <List className="busbox">
-                        {this.onViewList()}
-                    </List> 
-                </MuiThemeProvider>
-            </QueueAnim>
+            <div>
+                <QueueAnim className="App" ease={'easeInOutElastic'} type={'left'}>
+                    <img src={banner} key="logo" alt="logo" style={{ width: '100%',display: 'block' }} ref={ref => this.logo = ref} />
+                    {   
+                        notice
+                            ? <NoticeBar mode="link" onClick={() => this.setState({ visible:true})} marqueeProps={{ loop: true, fps: 80, leading: 400, trailing: 300,style: { padding: '0 7.5px', } }}>
+                                通知: {this.state.notice}.
+                            </NoticeBar>
+                            :null
+                    }
+                    <MuiThemeProvider key="list">
+                        <List className="busbox">
+                            {this.onViewList()}
+                        </List>
+                    </MuiThemeProvider>
+                </QueueAnim>
+                <Modal
+                    visible={this.state.visible}
+                    //title={"通知"}
+                    popup
+                    onClose={()=>this.setState({visible:false })}
+                    animationType="slide-up"
+                >
+                    <div style={{ padding: 8, textAlign: 'left', backgroundColor:'rgba(243,123,29,.9)',color:'#fff'}}>
+                        {this.state.notice}
+                    </div>
+                </Modal>
+            </div>
         );
     }
 }

@@ -21,7 +21,10 @@ commonConfig = {
         rules: [{
             test: /\.js$/,
             use: ['babel-loader?cacheDirectory=true'],
-            include: path.join(__dirname, 'src')
+            include: [
+                path.join(__dirname, 'src'),
+                path.resolve(__dirname, 'node_modules/amazeui-touch/js'),
+            ]
         }, {
             test: /\.(png|jpg|gif)$/,
             loader:"url-loader"

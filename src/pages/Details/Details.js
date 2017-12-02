@@ -58,7 +58,16 @@ class Details extends Component {
         };
     }
     componentDidMount() {
-        //this.changeFixed()
+        this.onchangeGetDay()
+    }
+    onchangeGetDay = () => {
+        let isWeekDay = new Date().getDay();
+        if (isWeekDay === 6) {
+            this.setState({ slideIndex: 1 });
+        }
+        if (isWeekDay === 0) {
+            this.setState({ slideIndex: 2 });
+        }
     }
     windowOnScroll() {
         let _this = this;
