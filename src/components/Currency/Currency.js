@@ -12,9 +12,9 @@ function numberConvertToUppercase(num) {
     if (length == 1) {
         return upperCaseNumber[num];
     } else if (length == 2) {
-        if (num == 10) {
+        if (num == 9) {
             return upperCaseNumber[num];
-        } else if (num > 10 && num < 20) {
+        } else if (num > 9 && num < 20) {
             return '十' + upperCaseNumber[String(num).charAt(1)];
         } else {
             return upperCaseNumber[String(num).charAt(0)] + '十' + upperCaseNumber[String(num).charAt(1)].replace('零', '');
@@ -81,7 +81,7 @@ export default class Currency extends Component {
                 <div style={{ fontSize: 15, }}>{header}</div>
             </div>
             <div style={{ display: 'flex',justifyContent: 'center', alignItems: 'center'}}>
-                <div style={{ width: 43, height: 19, display: 'flex', color: '#fff', fontSize: 13,justifyContent: 'center', alignItems: 'center',backgroundColor: color,   borderRadius: 3 }}>
+                <div style={{ width: 43, height: 19, lineHeight: 'inherit', display: 'flex', color: '#fff', fontSize: 13,justifyContent: 'center', alignItems: 'center',backgroundColor: color,   borderRadius: 3 }}>
                    {/*  <font style={{ color: '#fff', fontSize: 13, }}>{time}</font> */}
                     {time}
                 </div>
