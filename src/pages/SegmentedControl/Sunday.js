@@ -20,7 +20,7 @@ export default class Sunday extends Component {
     render() {
         return <div style={{ flex: 1 }}>
             <QueueAnim className="demo-content">
-                <Currency data={this.state.sunday} reverse={this.props.reverse} />
+                <Currency data={this.state.sunday} siteData={this.props.siteData} />
             </QueueAnim>
         </div>
     }

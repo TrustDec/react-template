@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { List, ListItem } from 'material-ui/List';
-import { NoticeBar } from 'antd-mobile';
+import { NoticeBar, Carousel } from 'antd-mobile';
+import Marquee from 'react-upward-marquee'
 import HardwareKeyboardBackspace from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import '../../style/App.css';
 import banner from '../../style/banner.png'
@@ -15,6 +16,17 @@ import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Modal } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
+let data = [
+    {
+        content: "I'm the first content and my delay is 2s",
+        time: 1
+    },
+    {
+        content: "I'm the second content and my delay is 4s",
+        time: 1
+    },
+    
+]
 class Home extends Component {
     
     constructor(props) {
@@ -87,16 +99,30 @@ class Home extends Component {
                                 通知: {this.state.notice}.
                             </NoticeBar>
                             :null
-                    }
+                     }
+                   {/*  <div style={{  display: 'inline-block', width: '98%', padding: 8, backgroundColor: '#FEFDEC' }}>
+                        <Carousel className="my-carousel"
+                            vertical
+                            dots={false}
+                            dragging={false}
+                            swiping={false}
+                            autoplay
+                            infinite
+                            autoplayInterval={4000}
+                        >
+                            <div className="v-item" style={{ color: '#F76A24' }}>{this.state.notice}</div>
+                            <div className="v-item" style={{ color: '#F76A24' }}>{this.state.notice}</div>
+                        </Carousel>
+                    </div> */}
                     <MuiThemeProvider key="list">
                         <List className="busbox">
                             {this.onViewList()}
                         </List>
                     </MuiThemeProvider>
                 </QueueAnim>
+                
                 <Modal
                     visible={this.state.visible}
-                    //title={"通知"}
                     popup
                     onClose={()=>this.setState({visible:false })}
                     animationType="slide-up"

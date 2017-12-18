@@ -22,7 +22,7 @@ export default class WorkingDay extends Component {
     render() {
         return <div style={{ flex: 1 }}>
             <QueueAnim className="demo-content">
-                <Currency data={this.state.wordingdata} reverse={this.props.reverse} />
+                <Currency data={this.state.wordingdata} siteData={this.props.siteData} />
             </QueueAnim>
         </div>
     }

@@ -100,7 +100,10 @@ class Details extends Component {
     onScrollViewList() {
         let data = this.props.location.state;
         let Components = label[this.state.slideIndex].component;
-        return <Components reverse={this.state.reverse} shiftID={data.id}/>
+        let start = this.state.reverse ? data.start : data.end;
+        let end = !this.state.reverse ? data.start : data.end;
+        let siteData = { start: start, end: end, reverse: this.state.reverse, slideIndex: this.state.slideIndex};
+        return <Components siteData={siteData} shiftID={data.id} slideIndex={this.state.slideIndex}/>
     }
     onClick = (event) => {
         let reverse = !this.state.reverse;
