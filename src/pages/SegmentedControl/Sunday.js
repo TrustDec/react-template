@@ -4,6 +4,7 @@ import sundayLD from '../../static/ld/sunday.json';
 import sundayJL from '../../static/jl/sunday.json';
 import Currency from '../../components/Currency/Currency';
 import QueueAnim from 'rc-queue-anim';
+import { FetchGet } from '../../modular/Common'
 export default class Sunday extends Component {
     constructor(props) {
         super(props)
@@ -12,10 +13,16 @@ export default class Sunday extends Component {
         };
     }
     componentDidMount() {
-        this.onGetSunday();
+        this.onGetSameDay();
     }
-    onGetSunday = () => {
-        this.setState({ sunday: SUNDAY[this.props.shiftID] });
+    onGetSameDay = () => {
+        let { shiftID, siteData, slideIndex } = this.props;
+        let responseData = async () => {
+            let responseData = await FetchGet(shiftID, 'Sunday');
+            this.setState({ sunday: responseData });
+        };
+        responseData();
+        //this.setState({ sunday: SUNDAY[this.props.shiftID] });
     }
     render() {
         return <div style={{ flex: 1 }}>

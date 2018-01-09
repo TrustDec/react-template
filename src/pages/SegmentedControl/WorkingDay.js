@@ -4,6 +4,7 @@ import workingdayLD from '../../static/ld/workingday.json';
 import workingdayJL from '../../static/jl/workingday.json';
 import Currency from '../../components/Currency/Currency';
 import QueueAnim from 'rc-queue-anim';
+import { FetchGet } from '../../modular/Common'
 
 export default class WorkingDay extends Component {
     constructor(props) {
@@ -13,11 +14,17 @@ export default class WorkingDay extends Component {
         };
     }
     componentDidMount() {
-        this.onGetWorkingDay();
+        this.onGetSameDay();
     }
     
-    onGetWorkingDay = () => {
-        this.setState({ wordingdata: WORKINGDAY[this.props.shiftID] });
+    onGetSameDay =  () => {
+        let { shiftID, siteData, slideIndex } = this.props;
+        let responseData = async () => {
+            let responseData = await FetchGet(shiftID,'Weekday');
+            this.setState({ wordingdata: responseData});
+        };
+        responseData();
+        //this.setState({ wordingdata: WORKINGDAY[this.props.shiftID] });
     }
     render() {
         return <div style={{ flex: 1 }}>

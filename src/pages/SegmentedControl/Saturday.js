@@ -4,6 +4,7 @@ import saturdayLD from '../../static/ld/saturday.json';
 import saturdayJL from '../../static/jl/saturday.json';
 import Currency from '../../components/Currency/Currency';
 import QueueAnim from 'rc-queue-anim';
+import { FetchGet } from '../../modular/Common'
 export default class Saturday extends Component {
     constructor(props) {
         super(props)
@@ -12,10 +13,16 @@ export default class Saturday extends Component {
         };
     }
     componentDidMount() {
-        this.onGetSaturday();
+        this.onGetSameDay();
     }
-    onGetSaturday = () => {
-        this.setState({ saturday: SATURDAY[this.props.shiftID] });
+    onGetSameDay = () => {
+        let { shiftID, siteData, slideIndex } = this.props;
+        let responseData = async () => {
+            let responseData = await FetchGet(shiftID, 'Saturday');
+            this.setState({ saturday: responseData });
+        };
+        responseData();
+        //this.setState({ saturday: SATURDAY[this.props.shiftID] });
     }
     render() {
         return <div style={{ flex: 1 }}>

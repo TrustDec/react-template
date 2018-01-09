@@ -4,6 +4,7 @@ import holidayLD from '../../static/ld/holiday.json';
 import holidayJL from '../../static/jl/holiday.json';
 import Currency from '../../components/Currency/Currency';
 import QueueAnim from 'rc-queue-anim';
+import { FetchGet } from '../../modular/Common'
 export default class Holiday extends Component {
     constructor(props) {
         super(props)
@@ -11,11 +12,17 @@ export default class Holiday extends Component {
             holiday: null
         };
     }
-    componentDidMount() {
-        this.onGetHoliday();
+    componentDidMount = () => {
+        this.onGetSameDay();
     }
-    onGetHoliday = () => {
-        this.setState({ holiday: HOLIDAY[this.props.shiftID] });
+    onGetSameDay = () => {
+        let { shiftID, siteData, slideIndex } = this.props;
+        let responseData = async () => {
+            let responseData = await FetchGet(shiftID, 'Vacation');
+            this.setState({ saturday: responseData });
+        };
+        responseData();
+        //this.setState({ holiday: HOLIDAY[this.props.shiftID] });
     }
     render() {
         return <div style={{ flex: 1 }}>

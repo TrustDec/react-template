@@ -16,17 +16,7 @@ import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Modal } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
-let data = [
-    {
-        content: "I'm the first content and my delay is 2s",
-        time: 1
-    },
-    {
-        content: "I'm the second content and my delay is 4s",
-        time: 1
-    },
-    
-]
+import { getQueryString } from "../../modular/Common";
 class Home extends Component {
     
     constructor(props) {
@@ -40,36 +30,31 @@ class Home extends Component {
     componentDidMount() {
         this.onGetSchoolBusData();
     }
-    onGetSchoolBusData = () => {
+    /* onGetSchoolBusData = () => {
         this.setState({ busdata: schoolbus.data, notice: schoolbus.notice});
-    }
-    /*onGetSchoolBusData = () => {
+    } */
+    onGetSchoolBusData = () => {
         let url = 'http://wxmh.ahu.edu.cn/wapp/busLineApiController.do?allline';
-        let Store = localStorage.getItem('buslist');
+        localStorage.setItem('code', getQueryString('code'));
+        let Store = localStorage.getItem('busdata');
         if (Store) {
             Store = JSON.parse(Store);
-            this.setState({ buslist: Store });
+            this.setState({ busdata: Store.data, notice: Store.notice });
             return
         }
-        fetch(url)
-            .then((data) => data.json())
-            .then((data) => {
-                localStorage.setItem('buslist', JSON.stringify(data.index));
-                this.setState({ buslist: data.index });
-            })
-            .catch((error)=>{
-                console.log(error)
-            });
-         /*try {
-            let response = await fetch(url);
-            let responseJson = await response.json();
-            localStorage.setItem('buslist', JSON.stringify(responseJson.index));
-            console.log(this)
-            this.setState({ buslist: responseJson.index });
-        } catch (error) {
-            console.error(error);
-        } 
-    }*/
+        let responseData = async () => {
+            try {
+                let response = await fetch(url);
+                let responseJson = await response.json();
+                console.log(responseJson.data)
+                this.setState({ busdata: responseJson.data, notice: responseJson.notice });
+                localStorage.setItem('busdata', JSON.stringify(responseJson));
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        responseData();
+    }
 
     onViewList = () => {
         return this.state.busdata && this.state.busdata.map((item, i) => {
@@ -81,14 +66,8 @@ class Home extends Component {
             </Link>
         });
     }
-    onPushDesPage = data => {
-        
-        console.log(this.props)
-        //this.props.history.push({ pathname: `/Details/${data.id}`, state: { ...data } })
-    }
-
     render() {
-        let notice = this.state.notice.length>0?true:false;
+        let notice = this.state.notice&&this.state.notice.length>0?true:false;
         return (
             <div>
                 <QueueAnim className="App" ease={'easeInOutElastic'} type={'left'}>
@@ -100,20 +79,6 @@ class Home extends Component {
                             </NoticeBar>
                             :null
                      }
-                   {/*  <div style={{  display: 'inline-block', width: '98%', padding: 8, backgroundColor: '#FEFDEC' }}>
-                        <Carousel className="my-carousel"
-                            vertical
-                            dots={false}
-                            dragging={false}
-                            swiping={false}
-                            autoplay
-                            infinite
-                            autoplayInterval={4000}
-                        >
-                            <div className="v-item" style={{ color: '#F76A24' }}>{this.state.notice}</div>
-                            <div className="v-item" style={{ color: '#F76A24' }}>{this.state.notice}</div>
-                        </Carousel>
-                    </div> */}
                     <MuiThemeProvider key="list">
                         <List className="busbox">
                             {this.onViewList()}

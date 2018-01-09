@@ -32,7 +32,7 @@ const styles = {
 };
 const style = {
     height: 120,
-    width: '95vw',
+    width: '95%',
     margin: '2.5vw',
     textAlign: 'center',
     display: 'flex',
@@ -119,7 +119,7 @@ class Details extends Component {
         return (
             <MuiThemeProvider style={{ height: '100%', }} >
                 <QueueAnim ease={'easeOutElastic'} >
-                    <div key="details" style={{ display: 'inline-block', height: '100%', overflow: 'hidden', }} >
+                    <div key="details" style={{ display: 'inline-block', height: '100%',width:'100%', overflow: 'hidden', }} >
                         <Paper style={style} zDepth={1} >
                             <TweenOne
                                 animation={this.animationLeft}
@@ -128,12 +128,12 @@ class Details extends Component {
                                 moment={this.state.moment}
                                 className="code-box-shape-left"
                             >{data.start}</TweenOne>
-                            <FloatingActionButton 
-                                mini={false} 
-                                style={{ position: 'relative', zIndex: 100 }} 
-                                onClick={this.onClick} 
+                            <FloatingActionButton
+                                mini={false}
+                                style={{ position: 'relative', zIndex: 100 }}
+                                onClick={this.onClick}
                                 backgroundColor='#27B2FF'>
-                                <ActionSwapHoriz style={{ width: 38, height: 38}}/>
+                                <ActionSwapHoriz style={{ width: 38, height: 38 }} />
                             </FloatingActionButton>
                             <TweenOne
                                 animation={this.animationRight}
@@ -150,7 +150,7 @@ class Details extends Component {
                             key="SegmentedControl"
                             tintColor={'#27B2FF'}
                             style={{ backgroundColor:'#fff',marginLeft: 10, marginRight: 10, height: 35, marginBottom: 8 }}
-                        />
+        /> 
                         <div style={styles.root} key="details-list">
                             {this.onScrollViewList()}
                         </div>
