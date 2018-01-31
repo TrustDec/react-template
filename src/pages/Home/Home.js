@@ -46,7 +46,6 @@ class Home extends Component {
             try {
                 let response = await fetch(url);
                 let responseJson = await response.json();
-                console.log(responseJson.data)
                 this.setState({ busdata: responseJson.data, notice: responseJson.notice });
                 localStorage.setItem('busdata', JSON.stringify(responseJson));
             } catch (error) {
