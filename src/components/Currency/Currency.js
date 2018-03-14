@@ -6,6 +6,7 @@ import ActionSwapHoriz from 'material-ui/svg-icons/action/swap-horiz';
 import LocationOn from 'material-ui/svg-icons/communication/location-on';
 import QueueAnim from 'rc-queue-anim';
 import { getQueryString, numberConvertToUppercase, compareDate, getSpeicalTime, getCurrentTime } from '../../modular/Common'
+import FromPost,{Base64} from '../../modular/Util'
 String.prototype.replaceAll = function (f, e) {
     var reg = new RegExp(f, "g"); //吧f替换成e 创建正则RegExp对象   
     return this.replace(reg, e);
@@ -116,31 +117,24 @@ export default class Currency extends Component {
             let time = `${getCurrentTime(__DATE__).ymd.replaceAll('-', '/')} ${items.time}:00`;
             let num = await this.showActionSheet();
             if (BUTTONS[num] !== 0){
-                Toast.loading('正在添加日程...', 10);
+                Toast.loading('正在添加日程...', 1000000);
                 let EarlyYMD = getSpeicalTime(BUTTONS[num], new Date(time)).hms;
-                let data = {
-                    "mctime": YMD,
-                    "mcstart": EarlyYMD,
-                    "mcend": items.time,
-                    "title": `${siteData.start}至${siteData.end}`,
-                    "background": ""
-                };
-                const URL = `http://wxmh.ahu.edu.cn/wapp/scheduleApiController.do?doAdd&code=${CODE}&mctime=${YMD}&mcstart=${EarlyYMD}&mcend=${items.time}&title=${siteData.start}至${siteData.end}&background=''`;
-                const OPTION = {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                };
-                try {
-                    let response = await fetch(URL);
-                    let responseJson = await response.json();
-                    Toast.hide();
-                    Toast.success('添加成功', 1);
-                } catch (error) {
-                    Toast.hide();
-                    Toast.fail('添加失败 !!!', 1);
-                }
+                let data = JSON.stringify({mctime:YMD,mcstart:EarlyYMD,mcend:items.time,title:`${siteData.start}至${siteData.end}`,background:'green'});
+               const URL = 'http://wxmh.ahu.edu.cn/wapp/scheduleApiController.do?doAdd';
+                let personBase = new Base64();
+                
+                let base64str = personBase.encode(data);
+                
+                let scheduleBase = {code:CODE,scheduleBase:base64str}
+                console.log(scheduleBase)
+                let response = await FromPost(URL,scheduleBase);
+                console.log(response)
+                Toast.hide()
+				if (response.flag && response.flag==="1") {
+					Toast.success('添加成功', 1);
+				} else {
+					Toast.fail('添加失败 !!!', 1);
+				}
             }
         }
         let slideIndex = this.props.siteData.slideIndex;

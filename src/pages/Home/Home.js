@@ -73,7 +73,7 @@ class Home extends Component {
                     <img src={banner} key="logo" alt="logo" style={{ width: '100%',display: 'block' }} ref={ref => this.logo = ref} />
                     {   
                         notice
-                            ? <NoticeBar mode="link" onClick={() => this.setState({ visible:true})} marqueeProps={{ loop: true, fps: 80, leading: 400, trailing: 300,style: { padding: '0 7.5px', } }}>
+                            ? <NoticeBar mode="link" onClick={() => this.setState({ visible:true})} marqueeProps={{ loop: true, fps: 60, leading: 400, trailing: 300,style: { padding: '0 7.5px', } }}>
                                 通知: {this.state.notice}.
                             </NoticeBar>
                             :null

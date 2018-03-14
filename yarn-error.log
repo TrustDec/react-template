@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/local/Cellar/node/7.10.0/bin/node /usr/local/bin/yarn add @gag/react-text-marquee
+  /usr/local/Cellar/node/9.6.1/bin/node /usr/local/bin/yarn build
 
 PATH: 
-  /Users/trust/.rvm/gems/ruby-2.3.4/bin:/Users/trust/.rvm/gems/ruby-2.3.4@global/bin:/Users/trust/.rvm/rubies/ruby-2.3.4/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Wireshark.app/Contents/MacOS:/Users/trust/.rvm/gems/ruby-2.3.4/bin:/Users/trust/.rvm/gems/ruby-2.3.4@global/bin:/Users/trust/.rvm/rubies/ruby-2.3.4/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/mysql/bin:/Users/trust/Library/Android/sdk/tools:/Users/trust/Library/Android/sdk/platform-tools:/Users/trust/Library/android-ndk-r10c:/Applications/Android Studio.app/Contents/gradle/gradle-3.2/bin:/Users/trust/.rvm/bin:/usr/local/mysql/bin:/Users/trust/Library/Android/sdk/tools:/Users/trust/Library/Android/sdk/platform-tools:/Users/trust/Library/android-ndk-r10c:/Applications/Android Studio.app/Contents/gradle/gradle-3.2/bin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public
 
 Yarn version: 
-  0.27.5
+  1.5.0
 
 Node version: 
-  7.10.0
+  9.6.1
 
 Platform: 
   darwin x64
@@ -36,6 +36,7 @@ npm manifest:
     "author": "brickspert",
     "license": "ISC",
     "devDependencies": {
+      "amazeui-touch": "^1.0.0",
       "babel-core": "^6.26.0",
       "babel-loader": "^7.1.2",
       "babel-plugin-import": "^1.6.2",
@@ -67,12 +68,15 @@ npm manifest:
       "history": "^4.7.2",
       "material-ui": "^0.19.4",
       "prop-types": "^15.6.0",
+      "query-string": "^6.0.0",
       "rc-queue-anim": "^1.4.0",
       "rc-tween-one": "^1.5.5",
       "react": "^15.6.1",
+      "react-addons-css-transition-group": "^15.6.2",
       "react-dom": "^15.6.1",
       "react-redux": "^5.0.6",
       "react-router-dom": "^4.2.2",
+      "react-upward-marquee": "^1.1.3",
       "redux": "^3.7.2",
       "redux-thunk": "^2.2.0"
     }
@@ -152,6 +156,12 @@ Lockfile:
   alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
     version "1.0.2"
     resolved "http://registry.npm.taobao.org/alphanum-sort/download/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
+  
+  amazeui-touch@^1.0.0:
+    version "1.0.0"
+    resolved "http://registry.npm.taobao.org/amazeui-touch/download/amazeui-touch-1.0.0.tgz#6dd013306a422e9bc64f83d66c8648ca60c843bd"
+    dependencies:
+      classnames "^2.2.5"
   
   ansi-html@0.0.7:
     version "0.0.7"
@@ -1834,6 +1844,10 @@ Lockfile:
   decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
     version "1.2.0"
     resolved "http://registry.npm.taobao.org/decamelize/download/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
+  
+  decode-uri-component@^0.2.0:
+    version "0.2.0"
+    resolved "http://registry.npm.taobao.org/decode-uri-component/download/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
   
   deep-eql@~2.0.1:
     version "2.0.2"
@@ -4472,6 +4486,13 @@ Lockfile:
       object-assign "^4.1.0"
       strict-uri-encode "^1.0.0"
   
+  query-string@^6.0.0:
+    version "6.0.0"
+    resolved "http://registry.npm.taobao.org/query-string/download/query-string-6.0.0.tgz#8b8f39447b73e8290d6f5e3581779218e9171142"
+    dependencies:
+      decode-uri-component "^0.2.0"
+      strict-uri-encode "^2.0.0"
+  
   querystring-es3@^0.2.0:
     version "0.2.1"
     resolved "http://registry.npm.taobao.org/querystring-es3/download/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -4668,6 +4689,12 @@ Lockfile:
       minimist "^1.2.0"
       strip-json-comments "~2.0.1"
   
+  react-addons-css-transition-group@^15.6.2:
+    version "15.6.2"
+    resolved "http://registry.npm.taobao.org/react-addons-css-transition-group/download/react-addons-css-transition-group-15.6.2.tgz#9e4376bcf40b5217d14ec68553081cee4b08a6d6"
+    dependencies:
+      react-transition-group "^1.2.0"
+  
   react-deep-force-update@^2.1.1:
     version "2.1.1"
     resolved "http://registry.npm.taobao.org/react-deep-force-update/download/react-deep-force-update-2.1.1.tgz#8ea4263cd6455a050b37445b3f08fd839d86e909"
@@ -4776,11 +4803,11 @@ Lockfile:
       prop-types "^15.5.4"
       warning "^3.0.0"
   
-  react-timer-mixin@^0.13.3:
+  react-timer-mixin@>=0.13.3, react-timer-mixin@^0.13.3:
     version "0.13.3"
     resolved "http://registry.npm.taobao.org/react-timer-mixin/download/react-timer-mixin-0.13.3.tgz#0da8b9f807ec07dc3e854d082c737c65605b3d22"
   
-  react-transition-group@^1.2.1:
+  react-transition-group@^1.2.0, react-transition-group@^1.2.1:
     version "1.2.1"
     resolved "http://registry.npm.taobao.org/react-transition-group/download/react-transition-group-1.2.1.tgz#e11f72b257f921b213229a774df46612346c7ca6"
     dependencies:
@@ -4796,6 +4823,12 @@ Lockfile:
     dependencies:
       raf "^3.1.0"
       tween-functions "^1.0.1"
+  
+  react-upward-marquee@^1.1.3:
+    version "1.1.3"
+    resolved "http://registry.npm.taobao.org/react-upward-marquee/download/react-upward-marquee-1.1.3.tgz#30900fdb523981d51154647825c72593b6f46713"
+    dependencies:
+      react-timer-mixin ">=0.13.3"
   
   react@^15.6.1:
     version "15.6.2"
@@ -5493,6 +5526,10 @@ Lockfile:
     version "1.1.0"
     resolved "http://registry.npm.taobao.org/strict-uri-encode/download/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   
+  strict-uri-encode@^2.0.0:
+    version "2.0.0"
+    resolved "http://registry.npm.taobao.org/strict-uri-encode/download/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
+  
   string-width@^1.0.1, string-width@^1.0.2:
     version "1.0.2"
     resolved "http://registry.npm.taobao.org/string-width/download/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -6099,14 +6136,16 @@ Lockfile:
       babel-runtime "6.x"
 
 Trace: 
-  Error: https://registry.npm.taobao.org/@gag%2freact-text-marquee: Not found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/util/request-manager.js:326:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/node_modules/request/request.js:188:22)
-      at emitTwo (events.js:106:13)
-      at Request.emit (events.js:194:7)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/node_modules/request/request.js:1171:10)
-      at emitOne (events.js:96:13)
-      at Request.emit (events.js:191:7)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/node_modules/request/request.js:1091:12)
-      at Object.onceWrapper (events.js:293:19)
-      at emitNone (events.js:91:20)
+  Error: Command failed.
+  Exit code: 2
+  Command: sh
+  Arguments: -c webpack --config webpack.config.js
+  Directory: /Users/smallrui/Development/React/SchoolBus
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at ChildProcess.emit (events.js:127:13)
+      at maybeClose (internal/child_process.js:933:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
