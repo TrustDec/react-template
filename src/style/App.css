@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+}
+a {
+  text-decoration: none;
+}
+html,body {
+  height:100%;
+  background: #f7f7f7
+}
+.busbox{
+  margin-top:-5px;
+}
+.App {
+ /* background-color: #fff; */
+}
+
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 80px;
+}
+
+.App-header {
+  text-align: center;
+  background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.code-box-shape-left {
+    position: absolute;
+    top: 50%;
+    margin-top:-10px;
+    bottom: 0;
+    left: 10px;
+    right: 0;
+    width: 100px;
+    height: 50px;
+    font-size: 19px;
+    border-radius: 4px;
+    /* background: #019bf0; */
+}
+.code-box-shape-right {
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    /* left: 0; */
+    margin-top:-10px;
+    right: 10px;
+    width: 100px;
+    height: 50px;
+    font-size: 19px;
+    border-radius: 4px;
+    /* background: red; */
+}
+.conditionArea{
+    display:inline-block;
+    height: 35px;
+    /* background: #fff; */
+    border:0;
+    width: 100%;
+}
+.conditionArea_absolute{
+     position: absolute; 
+}
+.conditionArea_fixed{
+    position: fixed;
+    top: 0px;
+    z-index: 44;
+}
