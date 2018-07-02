@@ -19,7 +19,7 @@ export default class Holiday extends Component {
         let { shiftID, siteData, slideIndex } = this.props;
         let responseData = async () => {
             let responseData = await FetchGet(shiftID, 'Vacation');
-            this.setState({ saturday: responseData });
+            this.setState({ holiday: responseData });
         };
         responseData();
         //this.setState({ holiday: HOLIDAY[this.props.shiftID] });
