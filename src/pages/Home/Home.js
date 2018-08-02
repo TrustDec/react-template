@@ -34,7 +34,7 @@ class Home extends Component {
         this.setState({ busdata: schoolbus.data, notice: schoolbus.notice});
     } */
     onGetSchoolBusData = () => {
-        let url = 'http://wxmh.ahu.edu.cn/wapp/busLineApiController.do?allline';
+        let url = 'https://wxmh.ahu.edu.cn/wapp/busLineApiController.do?allline';
         localStorage.setItem('code', getQueryString('code'));
         let Store = localStorage.getItem('busdata');
         if (Store) {

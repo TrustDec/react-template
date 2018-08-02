@@ -120,7 +120,7 @@ export default class Currency extends Component {
                 Toast.loading('正在添加日程...', 1000000);
                 let EarlyYMD = getSpeicalTime(BUTTONS[num], new Date(time)).hms;
                 let data = JSON.stringify({mctime:YMD,mcstart:EarlyYMD,mcend:items.time,title:`${siteData.start}至${siteData.end}`,background:'green'});
-               const URL = 'http://wxmh.ahu.edu.cn/wapp/scheduleApiController.do?doAdd';
+               const URL = 'https://wxmh.ahu.edu.cn/wapp/scheduleApiController.do?doAdd';
                 let personBase = new Base64();
                 
                 let base64str = personBase.encode(data);

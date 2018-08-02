@@ -57,7 +57,7 @@ export function getCurrentTime(DATA) {
 
 }
 export const FetchGet = async (shiftID,cycle) => {
-    let url = `http://wxmh.ahu.edu.cn/wapp/busOrderApiController.do?working&lineid=${shiftID}&mctime=${cycle}`;
+    let url = `https://wxmh.ahu.edu.cn/wapp/busOrderApiController.do?working&lineid=${shiftID}&mctime=${cycle}`;
     try {
         let response = await fetch(url);
         let responseJson = await response.json();
